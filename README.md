@@ -10,7 +10,7 @@ Backend API desarrollado con NestJS siguiendo Clean Architecture y principios SO
 - **Integración con The Cat API**: Consumo de API externa para datos de gatos
 - **Autenticación de Usuarios**: Sistema de login y registro con MongoDB
 - **Validación de Datos**: DTOs con class-validator
-- **Documentación**: Código bien documentado y estructurado
+- **Documentación**: Código bien documentado y estructurado. Se agrega coleccion postman para probar. Ten en cuenta las variables de entorno.
 - **Containerización**: Soporte completo para Docker y Docker Compose
 
 ## Endpoints
