@@ -5,6 +5,7 @@ import { RegisterDto } from '../../application/dto/register.dto';
 import { ApiResponse } from '../../../shared/interfaces/api-response.interface';
 import { User } from '../../domain/entities/user.entity';
 import { createSuccessResponse, createErrorResponse } from '../../../shared/decorators/api-response.decorator';
+import { Public } from 'src/shared/decorators/public.decorator';
 
 /**
  * Users controller.
@@ -23,10 +24,11 @@ export class UsersController {
    * @param loginDto - The login data.
    * @returns The logged-in user without the password.
    */
+  @Public()
   @Post('login')
-  async login(@Body() loginDto: LoginDto): Promise<ApiResponse<Omit<User, 'password'> | null>> {
+  async login(@Body() loginDto: LoginDto): Promise<ApiResponse<{ access_token: string; user: Omit<User, 'password'> }>> {
     try {
-      const user = await this.usersService.login(loginDto.email, loginDto.password);
+      const user = await this.usersService.login(loginDto);
       return createSuccessResponse(user, 'Login successful');
     } catch (error) {
       return createErrorResponse(error.message);
@@ -38,6 +40,7 @@ export class UsersController {
    * @param registerDto - The registration data.
    * @returns The registered user without the password.
    */
+  @Public()
   @Post('register')
   async register(@Body() registerDto: RegisterDto): Promise<ApiResponse<Omit<User, 'password'> | null>> {
     try {

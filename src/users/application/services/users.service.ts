@@ -3,6 +3,7 @@ import { LoginUseCase } from '../../domain/use-cases/login.use-case';
 import { RegisterUseCase } from '../../domain/use-cases/register.use-case';
 import { User } from '../../domain/entities/user.entity';
 import { RegisterDto } from './../dto/register.dto';
+import { LoginDto } from '../dto/login.dto';
 
 /**
  * Service for user-related operations.
@@ -20,8 +21,9 @@ export class UsersService {
    * @param password - The password of the user.
    * @returns The logged-in user without the password.
    */
-  async login(email: string, password: string): Promise<Omit<User, 'password'>> {
-    return await this.loginUseCase.execute(email, password);
+  async login(Login: LoginDto): Promise<{ access_token: string; user: Omit<User, 'password'> }> {
+    const result = await this.loginUseCase.execute(Login);
+    return result;
   }
 
   /**

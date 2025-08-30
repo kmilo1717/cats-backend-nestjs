@@ -15,12 +15,12 @@ Backend API desarrollado con NestJS siguiendo Clean Architecture y principios SO
 
 ## Endpoints
 
-### Controlador de Gatos
+### Controlador de Gatos (Requieren bearer token)
 - `GET /breeds` - Lista todas las razas de gatos
 - `GET /breeds/:breed_id` - Obtiene una raza específica
 - `GET /breeds/search?q={query}` - Busca razas por término
 
-### Controlador de Imágenes
+### Controlador de Imágenes (Requieren bearer token)
 - `GET /imagesbybreedid?breed_id={id}&limit={number}` - Obtiene imágenes por raza
 
 ### Controlador de Usuarios
