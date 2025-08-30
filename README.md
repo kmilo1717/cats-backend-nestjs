@@ -1,4 +1,4 @@
-markdown# Cats Backend API
+# Cats Backend API
 
 Backend API desarrollado con NestJS siguiendo Clean Architecture y principios SOLID para el manejo de razas de gatos, imágenes y usuarios.
 
